@@ -13,6 +13,9 @@ template <class ScalarType, unsigned int Dimension>
 double VMFDistance(const itk::Point <ScalarType,Dimension> &muFirst, const double &kappaFirst,
                    const itk::Point <ScalarType,Dimension> &muSec, const double &kappaSec);
     
+template <class ScalarType>
+double GetVonMisesConcentrationMLE(const ScalarType rbar);
+    
 } // end of namespace
 
 #include "animaVMFDistribution.hxx"

@@ -13,6 +13,7 @@ MultiCompartmentModel::MultiCompartmentModel()
 
 MultiCompartmentModel::~MultiCompartmentModel()
 {
+    std::cout << "MultiCompartmentModel Destructor." << std::endl;
 }
 
 itk::LightObject::Pointer MultiCompartmentModel::InternalClone() const

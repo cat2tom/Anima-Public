@@ -136,7 +136,10 @@ protected:
         m_UseBoundedOptimization = false;
     }
 
-    virtual ~BaseCompartment() {}
+    virtual ~BaseCompartment()
+    {
+        std::cout << "Base Destructor." << std::endl;
+    }
 
     virtual ListType BoundParameters(const ListType &params) = 0;
     virtual void UnboundParameters(ListType &params) = 0;

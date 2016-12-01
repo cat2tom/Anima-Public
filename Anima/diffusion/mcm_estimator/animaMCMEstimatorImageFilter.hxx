@@ -12,7 +12,6 @@
 #include <animaGaussianMCMVariableProjectionMultipleValuedCostFunction.h>
 
 #include <animaVectorOperations.h>
-#include <animaDistributionSampling.h>
 
 #include <animaDTIEstimationImageFilter.h>
 #include <animaDTIExtrapolateImageFilter.h>
@@ -357,34 +356,6 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
         for (unsigned int i = 0;i < this->GetNumberOfThreads();++i)
             m_MCMCreators[i]->SetConcentrationBounds(kappaLowerBound,kappaUpperBound);
     }
-    
-    if (m_CompartmentType == anima::NODDI)
-    {
-        unsigned int numberOfSamples = 1000;
-        unsigned int numberOfTabulatedKappas = 100;
-        
-        GradientType northPole(0.0);
-        northPole[2] = 1.0;
-        
-        m_WatsonSamples.resize(numberOfSamples);
-        std::mt19937 generator(time(0));
-        double step = 0.98 / (numberOfTabulatedKappas - 1.0);
-        
-        for (unsigned int i = 0;i < numberOfSamples;++i)
-        {
-            m_WatsonSamples[i].resize(numberOfTabulatedKappas);
-            double od = 0.01;
-            unsigned int pos = 0;
-            
-            while (od < 0.99)
-            {
-                double kappa = 1.0 / std::tan(M_PI / 2.0 * od);
-                anima::SampleFromWatsonDistribution(kappa, northPole, m_WatsonSamples[i][pos], 3, generator);
-                od += step;
-                ++pos;
-            }
-        }
-    }
 }
 
 template <class InputPixelType, class OutputPixelType>
@@ -402,6 +373,10 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
     typedef itk::ImageRegionConstIterator <VectorImageType> VectorImageIteratorType;
     OutImageIteratorType outIterator(this->GetOutput(),outputRegionForThread);
     VectorImageIteratorType initDTIterator(m_InitialDTImage,outputRegionForThread);
+    
+    VectorImageIteratorType gradDevIterator;
+    if (m_GradientNLTensors)
+        gradDevIterator = VectorImageIteratorType(m_GradientNLTensors,outputRegionForThread);
 
     typedef itk::ImageRegionIterator <MaskImageType> MaskIteratorType;
     MaskIteratorType maskItr(this->GetComputationMask(),outputRegionForThread);
@@ -424,7 +399,13 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
 
     double aiccValue, b0Value, sigmaSqValue;
     anima::BaseCompartment::ModelOutputVectorType initDTIValue;
-
+    
+    std::vector <GradientType> gradientTable = m_GradientDirections;
+    std::vector <double> bvalueList = m_BValuesList;
+    typename VectorImageType::PixelType gradDeviations;
+    
+    GradientType tmpGradient;
+    
     while (!outIterator.IsAtEnd())
     {
         resVec.Fill(0.0);
@@ -443,6 +424,9 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
             ++sigmaIterator;
             ++initDTIterator;
             ++moseIterator;
+            
+            if (m_GradientNLTensors)
+                ++gradDevIterator;
 
             continue;
         }
@@ -450,7 +434,37 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
         // Load DWI
         for (unsigned int i = 0;i < m_NumberOfImages;++i)
             observedSignals[i] = inIterators[i].Get();
-
+        
+        // Load grad_dev data if file provided
+        if (m_GradientNLTensors)
+        {
+            gradDeviations = gradDevIterator.Get();
+            
+            if (gradDeviations.GetNorm() > 0)
+            {
+                gradDeviations[0] += 1.0;
+                gradDeviations[4] += 1.0;
+                gradDeviations[8] += 1.0;
+                
+                for (unsigned int i = 0;i < m_NumberOfImages;++i)
+                {
+                    if (m_BValuesList[i] == 0)
+                        continue;
+                    
+                    tmpGradient.fill(0.0);
+                    for (unsigned int j = 0;j < 3;++j)
+                        for (unsigned int k = 0;k < 3;++k)
+                            tmpGradient[j] += gradDeviations[k*3+j] * m_GradientDirections[i][k];
+                    
+                    double sqNorm = tmpGradient.squared_magnitude();
+                    bvalueList[i] = sqNorm * m_BValuesList[i];
+                    
+                    for (unsigned int j = 0;j < 3;++j)
+                        gradientTable[i][j] = tmpGradient[j] / std::sqrt(sqNorm);
+                }
+            }
+        }
+        
         int moseValue = -1;
         bool estimateNonIsoCompartments = false;
         if (m_ExternalMoseVolume)
@@ -475,7 +489,7 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
                 moseValue = 0;
 
                 if (m_ModelWithFreeWaterComponent || m_ModelWithRestrictedWaterComponent || m_ModelWithStationaryWaterComponent)
-                    this->EstimateFreeWaterModel(mcmData,observedSignals,threadId,aiccValue,b0Value,sigmaSqValue);
+                    this->EstimateFreeWaterModel(mcmData,observedSignals,gradientTable,bvalueList,threadId,aiccValue,b0Value,sigmaSqValue);
             }
             else if (moseValue != -1)
             {
@@ -490,7 +504,7 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
                 double tmpAiccValue = 0;
                 MCMPointer mcmValue;
 
-                this->OptimizeNonIsotropicCompartments(mcmValue,i,initDTIValue,observedSignals,threadId,tmpAiccValue,tmpB0Value,tmpSigmaSqValue);
+                this->OptimizeNonIsotropicCompartments(mcmValue,i,initDTIValue,observedSignals,gradientTable,bvalueList,threadId,tmpAiccValue,tmpB0Value,tmpSigmaSqValue);
 
                 if ((tmpAiccValue < aiccValue)||(!m_FindOptimalNumberOfCompartments))
                 {
@@ -504,7 +518,7 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
             }
         }
         else if (m_ModelWithFreeWaterComponent || m_ModelWithRestrictedWaterComponent || m_ModelWithStationaryWaterComponent)
-            this->EstimateFreeWaterModel(mcmData,observedSignals,threadId,aiccValue,b0Value,sigmaSqValue);
+            this->EstimateFreeWaterModel(mcmData,observedSignals,gradientTable,bvalueList,threadId,aiccValue,b0Value,sigmaSqValue);
         else
             itkExceptionMacro("Nothing to estimate...");
 
@@ -540,6 +554,9 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
         ++sigmaIterator;
         ++initDTIterator;
         ++moseIterator;
+        
+        if (m_GradientNLTensors)
+            ++gradDevIterator;
     }
 }
 
@@ -548,7 +565,7 @@ void
 MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
 ::OptimizeNonIsotropicCompartments(MCMPointer &mcmValue, unsigned int currentNumberOfCompartments,
                                    BaseCompartment::ModelOutputVectorType &initialDTI,
-                                   std::vector <double> &observedSignals, itk::ThreadIdType threadId,
+                                   std::vector <double> &observedSignals, std::vector < GradientType > &gradientTable, std::vector < double > &bvalueList, itk::ThreadIdType threadId,
                                    double &aiccValue, double &b0Value, double &sigmaSqValue)
 {
     b0Value = 0;
@@ -583,12 +600,12 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
     MCMPointer mcmOptimizationValue;
     for (unsigned int restartNum = 0;restartNum < restartTotalNumber;++restartNum)
     {
-        this->InitialOrientationsEstimation(mcmOptimizationValue,currentNumberOfCompartments,initialDTI,observedSignals,
+        this->InitialOrientationsEstimation(mcmOptimizationValue,currentNumberOfCompartments,initialDTI,observedSignals,gradientTable,bvalueList,
                                             generator,threadId,aiccValue,b0Value,sigmaSqValue);
 
-        this->TrunkModelEstimation(mcmOptimizationValue,observedSignals,threadId,aiccValue,b0Value,sigmaSqValue);
+        this->TrunkModelEstimation(mcmOptimizationValue,observedSignals,gradientTable,bvalueList,threadId,aiccValue,b0Value,sigmaSqValue);
         if ((m_CompartmentType != Stick)&&(m_CompartmentType != Zeppelin))
-            this->SpecificModelEstimation(mcmOptimizationValue,observedSignals,threadId,aiccValue,b0Value,sigmaSqValue);
+            this->SpecificModelEstimation(mcmOptimizationValue,observedSignals,gradientTable,bvalueList,threadId,aiccValue,b0Value,sigmaSqValue);
 
         if ((aiccValue < optimalAiccValue)||(restartNum == 0))
         {
@@ -607,7 +624,7 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
 template <class InputPixelType, class OutputPixelType>
 void
 MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
-::EstimateFreeWaterModel(MCMPointer &mcmValue, std::vector <double> &observedSignals, itk::ThreadIdType threadId,
+::EstimateFreeWaterModel(MCMPointer &mcmValue, std::vector <double> &observedSignals, std::vector < GradientType > &gradientTable, std::vector < double > &bvalueList, itk::ThreadIdType threadId,
                          double &aiccValue, double &b0Value, double &sigmaSqValue)
 {
     // Declarations for optimization
@@ -628,7 +645,7 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
     b0Value = 0;
     sigmaSqValue = 1;
 
-    CostFunctionBasePointer cost = this->CreateCostFunction(observedSignals,mcmValue);
+    CostFunctionBasePointer cost = this->CreateCostFunction(observedSignals,mcmValue,gradientTable,bvalueList);
 
     unsigned int dimension = mcmValue->GetNumberOfParameters();
     ParametersType p(dimension);
@@ -649,7 +666,7 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
         workVec = mcmValue->GetParametersAsVector();
         for (unsigned int i = 0;i < dimension;++i)
             p[i] = workVec[i];
-
+        
         double costValue = this->PerformSingleOptimization(p,cost,lowerBounds,upperBounds);
 
         // - Get estimated DTI and B0
@@ -672,7 +689,7 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
 
 template <class InputPixelType, class OutputPixelType>
 typename MCMEstimatorImageFilter<InputPixelType, OutputPixelType>::CostFunctionBasePointer
-MCMEstimatorImageFilter<InputPixelType, OutputPixelType>::CreateCostFunction(std::vector <double> &observedSignals, MCMPointer &mcmModel)
+MCMEstimatorImageFilter<InputPixelType, OutputPixelType>::CreateCostFunction(std::vector <double> &observedSignals, MCMPointer &mcmModel, std::vector < GradientType > &gradientTable, std::vector < double > &bvalueList)
 {
     CostFunctionBasePointer returnCost;
 
@@ -683,8 +700,8 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>::CreateCostFunction(std
             anima::GaussianMCMCostFunction::Pointer tmpCost = anima::GaussianMCMCostFunction::New();
             tmpCost->SetMarginalEstimation(m_MLEstimationStrategy == Marginal);
             tmpCost->SetObservedSignals(observedSignals);
-            tmpCost->SetGradients(m_GradientDirections);
-            tmpCost->SetBValues(m_BValuesList);
+            tmpCost->SetGradients(gradientTable);
+            tmpCost->SetBValues(bvalueList);
             tmpCost->SetMCMStructure(mcmModel);
 
             returnCost = tmpCost;
@@ -693,8 +710,8 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>::CreateCostFunction(std
         {
             anima::GaussianMCMVariableProjectionCost::Pointer internalCost = anima::GaussianMCMVariableProjectionCost::New();
             internalCost->SetObservedSignals(observedSignals);
-            internalCost->SetGradients(m_GradientDirections);
-            internalCost->SetBValues(m_BValuesList);
+            internalCost->SetGradients(gradientTable);
+            internalCost->SetBValues(bvalueList);
             internalCost->SetMCMStructure(mcmModel);
 
             if (m_Optimizer == "levenberg")
@@ -730,7 +747,7 @@ void
 MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
 ::InitialOrientationsEstimation(MCMPointer &mcmValue, unsigned int currentNumberOfCompartments,
                                 BaseCompartment::ModelOutputVectorType &initialDTI,
-                                std::vector <double> &observedSignals, SequenceGeneratorType &generator,
+                                std::vector <double> &observedSignals, std::vector < GradientType > &gradientTable, std::vector < double > &bvalueList, SequenceGeneratorType &generator,
                                 itk::ThreadIdType threadId, double &aiccValue, double &b0Value, double &sigmaSqValue)
 {
     // Single DTI is already estimated, get it to use in next step
@@ -783,7 +800,7 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
     for (unsigned int j = 0;j < dimension;++j)
         upperBounds[j] = workVec[j];
 
-    CostFunctionBasePointer cost = this->CreateCostFunction(observedSignals,mcmUpdateValue);
+    CostFunctionBasePointer cost = this->CreateCostFunction(observedSignals,mcmUpdateValue, gradientTable, bvalueList);
 
     // - Now the tricky part: initialize from previous model, handled somewhere else
     this->InitializeStickModelFromDTI(mcmDTIValue,mcmUpdateValue,generator);
@@ -802,7 +819,6 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
     mcmUpdateValue->SetParametersFromVector(workVec);
 
     this->GetProfiledInformation(cost,mcmUpdateValue,b0Value,sigmaSqValue);
-
     aiccValue = this->ComputeAICcValue(mcmUpdateValue,costValue);
     mcmValue = mcmUpdateValue;
 }
@@ -810,7 +826,7 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
 template <class InputPixelType, class OutputPixelType>
 void
 MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
-::TrunkModelEstimation(MCMPointer &mcmValue, std::vector <double> &observedSignals, itk::ThreadIdType threadId,
+::TrunkModelEstimation(MCMPointer &mcmValue, std::vector <double> &observedSignals, std::vector < GradientType > &gradientTable, std::vector < double > &bvalueList, itk::ThreadIdType threadId,
                        double &aiccValue, double &b0Value, double &sigmaSqValue)
 {
     unsigned int optimalNumberOfCompartments = mcmValue->GetNumberOfCompartments() - mcmValue->GetNumberOfIsotropicCompartments();
@@ -830,7 +846,7 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
     // - Now the tricky part: initialize from previous model, handled somewhere else
     this->InitializeModelFromSimplifiedOne(mcmValue,mcmUpdateValue);
 
-    CostFunctionBasePointer cost = this->CreateCostFunction(observedSignals,mcmUpdateValue);
+    CostFunctionBasePointer cost = this->CreateCostFunction(observedSignals,mcmUpdateValue,gradientTable,bvalueList);
 
     unsigned int dimension = mcmUpdateValue->GetNumberOfParameters();
     ParametersType p(dimension);
@@ -872,7 +888,7 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
     this->InitializeModelFromSimplifiedOne(mcmValue,mcmUpdateValue);
 
     // - Update ball and zeppelin model against observed signals
-    cost = this->CreateCostFunction(observedSignals,mcmUpdateValue);
+    cost = this->CreateCostFunction(observedSignals,mcmUpdateValue,gradientTable,bvalueList);
     dimension = mcmUpdateValue->GetNumberOfParameters();
     p.SetSize(dimension);
     lowerBounds.SetSize(dimension);
@@ -905,7 +921,7 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
 template <class InputPixelType, class OutputPixelType>
 void
 MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
-::SpecificModelEstimation(MCMPointer &mcmValue, std::vector <double> &observedSignals, itk::ThreadIdType threadId,
+::SpecificModelEstimation(MCMPointer &mcmValue, std::vector <double> &observedSignals, std::vector < GradientType > &gradientTable, std::vector < double > &bvalueList, itk::ThreadIdType threadId,
                           double &aiccValue, double &b0Value, double &sigmaSqValue)
 {
     // Finally, we're done with ball and zeppelin, an example of what's next up with multi-tensor
@@ -913,14 +929,11 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
     MCMCreatorType *mcmCreator = m_MCMCreators[threadId];
     // Other params are supposed to be already initialized from trunk estimation
     mcmCreator->SetCompartmentType(m_CompartmentType);
-    
-    if (m_CompartmentType == NODDI)
-        mcmCreator->SetWatsonSamples(m_WatsonSamples);
 
     MCMPointer mcmUpdateValue = mcmCreator->GetNewMultiCompartmentModel();
     MCMPointer mcmOptimalModel = mcmCreator->GetNewMultiCompartmentModel();
     
-    CostFunctionBasePointer cost = this->CreateCostFunction(observedSignals,mcmUpdateValue);
+    CostFunctionBasePointer cost = this->CreateCostFunction(observedSignals,mcmUpdateValue,gradientTable,bvalueList);
 
     // - Update multi-tensor model against observed signals
     unsigned int dimension = mcmUpdateValue->GetNumberOfParameters();
@@ -948,9 +961,12 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
     
     if (m_CompartmentType == NODDI)
     {
-        ldsSequence = SequenceGeneratorType(numNonIsoCompartments);
+        ldsSequence = SequenceGeneratorType(2 * numNonIsoCompartments);
         MCMType::ListType lowerBoundsSequenceSampling(numNonIsoCompartments,0.0);
-        MCMType::ListType upperBoundsSequenceSampling(numNonIsoCompartments,1000.0);
+        MCMType::ListType upperBoundsSequenceSampling(numNonIsoCompartments,128.0);
+        
+        for (unsigned int i = 0;i < numNonIsoCompartments;++i)
+            upperBoundsSequenceSampling[numNonIsoCompartments + i] = 1.0;
         
         ldsSequence.SetLowerBounds(lowerBoundsSequenceSampling);
         ldsSequence.SetUpperBounds(upperBoundsSequenceSampling);
@@ -989,11 +1005,8 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
                 // Random kappa initialization
                 mcmUpdateValue->GetCompartment(i)->SetOrientationConcentration(sampledData[index]);
                 
-                // Following assumed tortuosity model in NODDI, the extra-axonal fraction can be initialized as the ratio d_perp_zep / d_para_zep
-                double zeppelinAxDiff = mcmUpdateValue->GetCompartment(i)->GetAxialDiffusivity();
-                double zeppelinRadDiff = mcmUpdateValue->GetCompartment(i)->GetRadialDiffusivity1();
-                
-                mcmUpdateValue->GetCompartment(i)->SetExtraAxonalFraction(zeppelinRadDiff / zeppelinAxDiff);
+                // Random EAF initialization
+                mcmUpdateValue->GetCompartment(i)->SetExtraAxonalFraction(sampledData[numNonIsoCompartments + index]);
             }
             else
             {

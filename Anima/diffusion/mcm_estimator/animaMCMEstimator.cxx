@@ -24,6 +24,7 @@ int main(int argc,  char **argv)
     TCLAP::ValueArg<std::string> gradsArg("g", "grads", "Gradient table", true, "", "gradients", cmd);
     TCLAP::ValueArg<std::string> bvalsArg("b", "bvals", "B-value list", true, "", "b-values", cmd);
     TCLAP::SwitchArg bvalueScaleArg("B","b-no-scale","Do not scale b-values according to gradient norm",cmd);
+    TCLAP::ValueArg<std::string> gradnlArg("","grad-nl","Gradient non-linearity tensors file (default: none)",false,"","grad NL tensors",cmd);
 
     // Outputs
     TCLAP::ValueArg<std::string> outArg("o", "out-mcm", "MCM output volume", true, "", "MCM output", cmd);
@@ -80,6 +81,7 @@ int main(int argc,  char **argv)
     typedef anima::MCMEstimatorImageFilter <float, double> FilterType;
     typedef FilterType::InputImageType InputImageType;
     typedef FilterType::MaskImageType MaskImageType;
+    typedef FilterType::VectorImageType VectorImageType;
     typedef FilterType::CompartmentType CompartmentType;
     typedef FilterType::Pointer FilterPointer;
 
@@ -108,6 +110,9 @@ int main(int argc,  char **argv)
 
     GFReaderType::BValueVectorType mb = gfReader.GetBValues();
     filter->SetBValuesList(mb);
+    
+    if (gradnlArg.getValue() != "")
+        filter->SetGradientNLTensors(anima::readImage<VectorImageType>(gradnlArg.getValue()));
 
     if (computationMaskArg.getValue() != "")
         filter->SetComputationMask(anima::readImage<MaskImageType>(computationMaskArg.getValue()));

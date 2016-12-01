@@ -177,6 +177,7 @@ public:
     void SetBValuesList(std::vector <double> &mb){m_BValuesList = mb;}
     void AddGradientDirection(unsigned int i, GradientType &grad);
     itkSetMacro(B0Threshold, double)
+    void SetGradientNLTensors(const VectorImagePointer &image) {m_GradientNLTensors = image;}
 
     // Optimizer-related parameters
     void SetOptimizer(std::string &opt) {m_Optimizer = opt;}
@@ -251,6 +252,7 @@ protected:
 
         m_BValuesList.clear();
         m_GradientDirections.clear();
+        m_GradientNLTensors = NULL;
         m_Optimizer = "bobyqa";
 
         m_NumberOfRandomRestarts = 1;
@@ -309,34 +311,34 @@ protected:
     void ThreadedGenerateData(const OutputImageRegionType &outputRegionForThread, itk::ThreadIdType threadId) ITK_OVERRIDE;
 
     //! Create a cost function following the noise type and estimation mode
-    virtual CostFunctionBasePointer CreateCostFunction(std::vector<double> &observedSignals, MCMPointer &mcmModel);
+    virtual CostFunctionBasePointer CreateCostFunction(std::vector<double> &observedSignals, MCMPointer &mcmModel, std::vector < GradientType > &gradientTable, std::vector < double > &bvalueList);
 
     //! Create an optimizer following the optimizer type and estimation mode
     OptimizerPointer CreateOptimizer(CostFunctionBasePointer &cost, itk::Array<double> &lowerBounds, itk::Array<double> &upperBounds);
 
     //! Specific method for N=0 compartments estimation (only free water)
-    void EstimateFreeWaterModel(MCMPointer &mcmValue, std::vector <double> &observedSignals, itk::ThreadIdType threadId,
+    void EstimateFreeWaterModel(MCMPointer &mcmValue, std::vector <double> &observedSignals, std::vector < GradientType > &gradientTable, std::vector < double > &bvalueList, itk::ThreadIdType threadId,
                                 double &aiccValue, double &b0Value, double &sigmaSqValue);
 
     //! Doing estimation of non isotropic compartments (for a given number of anisotropic compartments)
     void OptimizeNonIsotropicCompartments(MCMPointer &mcmValue, unsigned int currentNumberOfCompartments,
                                           BaseCompartment::ModelOutputVectorType &initialDTI,
-                                          std::vector <double> &observedSignals, itk::ThreadIdType threadId,
+                                          std::vector <double> &observedSignals, std::vector < GradientType > &gradientTable, std::vector < double > &bvalueList, itk::ThreadIdType threadId,
                                           double &aiccValue, double &b0Value, double &sigmaSqValue);
 
     //! Doing estimation only of multiple orientations
     void InitialOrientationsEstimation(MCMPointer &mcmValue, unsigned int currentNumberOfCompartments,
                                        BaseCompartment::ModelOutputVectorType &initialDTI,
-                                       std::vector <double> &observedSignals, SequenceGeneratorType &generator,
+                                       std::vector <double> &observedSignals, std::vector < GradientType > &gradientTable, std::vector < double > &bvalueList, SequenceGeneratorType &generator,
                                        itk::ThreadIdType threadId, double &aiccValue, double &b0Value, double &sigmaSqValue);
 
     //! Doing estimation, calling initialization procedure until ball and zeppelin, returns AICc value
-    void TrunkModelEstimation(MCMPointer &mcmValue, std::vector <double> &observedSignals, itk::ThreadIdType threadId,
+    void TrunkModelEstimation(MCMPointer &mcmValue, std::vector <double> &observedSignals, std::vector < GradientType > &gradientTable, std::vector < double > &bvalueList, itk::ThreadIdType threadId,
                               double &aiccValue, double &b0Value, double &sigmaSqValue);
 
     //! Perform additional estimation after ball and zeppelin if needed
     // Input should be the previous ball and zeppelin model, will be replaced by result
-    virtual void SpecificModelEstimation(MCMPointer &mcmValue, std::vector <double> &observedSignals, itk::ThreadIdType threadId,
+    virtual void SpecificModelEstimation(MCMPointer &mcmValue, std::vector <double> &observedSignals, std::vector < GradientType > &gradientTable, std::vector < double > &bvalueList, itk::ThreadIdType threadId,
                                          double &aiccValue, double &b0Value, double &sigmaSqValue);
     
     //! Performs an optimization of the supplied cost function and parameters using the specified optimizer(s). Returns the optimized parameters.
@@ -368,6 +370,7 @@ private:
 
     std::vector <double> m_BValuesList;
     std::vector< GradientType > m_GradientDirections;
+    VectorImagePointer m_GradientNLTensors;
 
     OutputScalarImagePointer m_B0Volume;
     OutputScalarImagePointer m_SigmaSquareVolume;
@@ -416,8 +419,6 @@ private:
     unsigned int m_MaxEval;
     double m_XTolerance;
     double m_GTolerance;
-    
-    std::vector < std::vector<GradientType> > m_WatsonSamples;
 };
 
 } // end namespace anima

@@ -1257,7 +1257,7 @@ MCMEstimatorImageFilter<InputPixelType, OutputPixelType>
     // Compute AICu (improvement over AICc)
     // nbparams is the number of parameters of the model plus the B0 value and the variance value
     double nbparams = mcmValue->GetNumberOfParameters() + 2.0;
-
+    
     // We assume the cost value is returned as - 2 * log-likelihood
     double AICc = costValue + 2.0 * nbparams + 2.0 * nbparams * (nbparams + 1.0) / (m_NumberOfImages - nbparams - 1.0)
             + m_NumberOfImages * std::log(m_NumberOfImages / (m_NumberOfImages - nbparams - 1.0));

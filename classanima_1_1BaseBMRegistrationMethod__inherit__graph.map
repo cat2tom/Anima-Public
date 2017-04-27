@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classanima_1_1AsymmetricBMRegistrationMethod.html" title="anima::AsymmetricBMRegistrationMethod\&lt; TInputImageType \&gt;" alt="" coords="464,5,891,35"/>
+<area shape="rect" id="node5" href="$classanima_1_1DistortionCorrectionBMRegistrationMethod.html" title="anima::DistortionCorrectionBMRegistrationMethod\&lt; TInputImageType \&gt;" alt="" coords="439,59,916,88"/>
+<area shape="rect" id="node7" href="$classanima_1_1KissingSymmetricBMRegistrationMethod.html" title="anima::KissingSymmetricBMRegistrationMethod\&lt; TInputImageType \&gt;" alt="" coords="445,112,909,141"/>
+<area shape="rect" id="node9" href="$classanima_1_1SymmetricBMRegistrationMethod.html" title="anima::SymmetricBMRegistrationMethod\&lt; TInputImageType \&gt;" alt="" coords="468,165,887,195"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node5" href="$classanima_1_1FreeWaterCompartment.html" title="anima::FreeWaterCompartment" alt="" coords="588,5,809,35"/>
+<area shape="rect" id="node7" href="$classanima_1_1IsotropicRestrictedWaterCompartment.html" title="anima::IsotropicRestrictedWaterCompartment" alt="" coords="543,59,855,88"/>
+<area shape="rect" id="node9" href="$classanima_1_1StationaryWaterCompartment.html" title="anima::StationaryWaterCompartment" alt="" coords="568,112,829,141"/>
+<area shape="rect" id="node2" href="$classanima_1_1BaseCompartment.html" title="anima::BaseCompartment" alt="" coords="5,59,197,88"/>
+</map>

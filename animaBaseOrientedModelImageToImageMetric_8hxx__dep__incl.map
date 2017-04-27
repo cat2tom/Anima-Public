@@ -1,0 +1,14 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$animaBaseOrientedModelImageToImageMetric_8h.html" title="animaBaseOrientedModelImageToImageMetric.h" alt="" coords="447,83,777,112"/>
+<area shape="rect" id="node5" href="$animaTensorBlockMatcher_8hxx.html" title="animaTensorBlockMatcher.hxx" alt="" coords="360,237,573,267"/>
+<area shape="rect" id="node18" href="$animaTensorCorrelationImageToImageMetric_8h.html" title="animaTensorCorrelationImageToImageMetric.h" alt="" coords="61,160,379,189"/>
+<area shape="rect" id="node24" href="$animaTensorGeneralizedCorrelationImageToImageMetric_8h.html" title="animaTensorGeneralizedCorrelationImageToImageMetric.h" alt="" coords="547,160,939,189"/>
+<area shape="rect" id="node30" href="$animaTensorMeanSquaresImageToImageMetric_8h.html" title="animaTensorMeanSquaresImageToImageMetric.h" alt="" coords="1020,160,1353,189"/>
+<area shape="rect" id="node7" href="$animaTensorBlockMatcher_8h.html" title="animaTensorBlockMatcher.h" alt="" coords="367,315,567,344"/>
+<area shape="rect" id="node10" href="$animaPyramidalDenseTensorSVFMatchingBridge_8hxx.html" title="animaPyramidalDenseTensorSVFMatchingBridge.hxx" alt="" coords="288,392,645,421"/>
+<area shape="rect" id="node12" href="$animaPyramidalDenseTensorSVFMatchingBridge_8h.html" title="animaPyramidalDenseTensorSVFMatchingBridge.h" alt="" coords="296,469,637,499"/>
+<area shape="rect" id="node14" href="$animaDenseTensorSVFBMRegistration_8cxx.html" title="animaDenseTensorSVFBMRegistration.cxx" alt="" coords="323,547,611,576"/>
+<area shape="rect" id="node21" href="$animaTensorCorrelationImageToImageMetric_8hxx.html" title="animaTensorCorrelationImageToImageMetric.hxx" alt="" coords="5,237,336,267"/>
+<area shape="rect" id="node27" href="$animaTensorGeneralizedCorrelationImageToImageMetric_8hxx.html" title="animaTensorGeneralizedCorrelationImageToImageMetric.hxx" alt="" coords="597,237,1003,267"/>
+<area shape="rect" id="node33" href="$animaTensorMeanSquaresImageToImageMetric_8hxx.html" title="animaTensorMeanSquaresImageToImageMetric.hxx" alt="" coords="1027,237,1376,267"/>
+</map>

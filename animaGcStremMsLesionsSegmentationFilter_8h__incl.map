@@ -1,0 +1,21 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$animaTLinksFilter_8h.html" title="animaTLinksFilter.h" alt="" coords="51,237,192,267"/>
+<area shape="rect" id="node16" href="$animaGraphCutFilter_8h.html" title="animaGraphCutFilter.h" alt="" coords="1036,83,1199,112"/>
+<area shape="rect" id="node58" href="$animaCheckStructureNeighborFilter_8h.html" title="animaCheckStructureNeighborFilter.h" alt="" coords="2519,160,2777,189"/>
+<area shape="rect" id="node79" href="$animaRemoveTouchingBorderFilter_8h.html" title="animaRemoveTouchingBorderFilter.h" alt="" coords="3896,160,4147,189"/>
+<area shape="rect" id="node93" href="$animaComputeMahalanobisImagesFilter_8h.html" title="animaComputeMahalanobisImagesFilter.h" alt="" coords="5008,160,5296,189"/>
+<area shape="rect" id="node110" href="$animaComputeSolution_8h.html" title="animaComputeSolution.h" alt="" coords="6196,160,6380,189"/>
+<area shape="rect" id="node149" href="$animaGcStremMsLesionsSegmentationFilter_8hxx.html" title="animaGcStremMsLesionsSegmentationFilter.hxx" alt="" coords="6381,83,6712,112"/>
+<area shape="rect" id="node13" href="$animaTLinksFilter_8hxx.html" title="animaTLinksFilter.hxx" alt="" coords="5,315,160,344"/>
+<area shape="rect" id="node20" href="$animaReadWriteFunctions_8h.html" title="animaReadWriteFunctions.h" alt="" coords="4331,237,4525,267"/>
+<area shape="rect" id="node29" href="$animaGraph3DFilter_8h.html" title="animaGraph3DFilter.h" alt="" coords="940,160,1100,189"/>
+<area shape="rect" id="node55" href="$animaGraphCutFilter_8hxx.html" title="animaGraphCutFilter.hxx" alt="" coords="1124,160,1303,189"/>
+<area shape="rect" id="node31" href="$animaNLinksFilter_8h.html" title="animaNLinksFilter.h" alt="" coords="1035,237,1179,267"/>
+<area shape="rect" id="node76" href="$animaCheckStructureNeighborFilter_8hxx.html" title="animaCheckStructureNeighborFilter.hxx" alt="" coords="2424,237,2699,267"/>
+<area shape="rect" id="node90" href="$animaRemoveTouchingBorderFilter_8hxx.html" title="animaRemoveTouchingBorderFilter.hxx" alt="" coords="3888,237,4155,267"/>
+<area shape="rect" id="node107" href="$animaComputeMahalanobisImagesFilter_8hxx.html" title="animaComputeMahalanobisImagesFilter.hxx" alt="" coords="5173,237,5475,267"/>
+<area shape="rect" id="node123" href="$animaGaussianREMEstimator_8h.html" title="animaGaussianREMEstimator.h" alt="" coords="6420,315,6641,344"/>
+<area shape="rect" id="node125" href="$animaAtlasInitializer_8h.html" title="animaAtlasInitializer.h" alt="" coords="6208,237,6368,267"/>
+<area shape="rect" id="node129" href="$animaHierarchicalInitializer_8h.html" title="animaHierarchicalInitializer.h" alt="" coords="6715,237,6917,267"/>
+<area shape="rect" id="node134" href="$animaComputeSolution_8hxx.html" title="animaComputeSolution.hxx" alt="" coords="6493,237,6691,267"/>
+</map>

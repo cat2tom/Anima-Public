@@ -1,0 +1,17 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$animaBaseOrientedModelImageToImageMetric_8h.html" title="animaBaseOrientedModelImageToImageMetric.h" alt="" coords="415,83,746,112"/>
+<area shape="rect" id="node116" href="$animaTensorGeneralizedCorrelationImageToImageMetric_8hxx.html" title="animaTensorGeneralizedCorrelationImageToImageMetric.hxx" alt="" coords="1088,83,1494,112"/>
+<area shape="rect" id="node17" href="$animaBaseOrientedModelImageToImageMetric_8hxx.html" title="animaBaseOrientedModelImageToImageMetric.hxx" alt="" coords="868,160,1212,189"/>
+<area shape="rect" id="node20" href="$animaBaseTensorTools_8h.html" title="animaBaseTensorTools.h" alt="" coords="1220,237,1399,267"/>
+<area shape="rect" id="node32" href="$animaBaseTensorTools_8hxx.html" title="animaBaseTensorTools.hxx" alt="" coords="1214,315,1406,344"/>
+<area shape="rect" id="node37" href="$animaVectorOperations_8h.html" title="animaVectorOperations.h" alt="" coords="1228,547,1412,576"/>
+<area shape="rect" id="node62" href="$animaMatrixOperations_8h.html" title="animaMatrixOperations.h" alt="" coords="1230,392,1411,421"/>
+<area shape="rect" id="node50" href="$animaVectorOperations_8hxx.html" title="animaVectorOperations.hxx" alt="" coords="727,624,924,653"/>
+<area shape="rect" id="node55" href="$animaLogarithmFunctions_8h.html" title="animaLogarithmFunctions.h" alt="" coords="592,701,790,731"/>
+<area shape="rect" id="node57" href="$animaLogarithmFunctions_8hxx.html" title="animaLogarithmFunctions.hxx" alt="" coords="580,779,794,808"/>
+<area shape="rect" id="node65" href="$animaMatrixOperations_8hxx.html" title="animaMatrixOperations.hxx" alt="" coords="1222,469,1419,499"/>
+<area shape="rect" id="node69" href="$animaLinearTransformEstimationTools_8h.html" title="animaLinearTransformEstimationTools.h" alt="" coords="1896,547,2171,576"/>
+<area shape="rect" id="node77" href="$animaLinearTransformEstimationTools_8hxx.html" title="animaLinearTransformEstimationTools.hxx" alt="" coords="2071,624,2359,653"/>
+<area shape="rect" id="node80" href="$animaMatrixLogExp_8h.html" title="animaMatrixLogExp.h" alt="" coords="1960,701,2118,731"/>
+<area shape="rect" id="node90" href="$animaMatrixLogExp_8hxx.html" title="animaMatrixLogExp.hxx" alt="" coords="1952,779,2126,808"/>
+</map>

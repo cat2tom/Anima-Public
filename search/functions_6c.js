@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['legendre_5ffirst_5fderivative',['legendre_first_derivative',['../namespaceanima.html#a9aa022879969eb209f38d494cd922cfd',1,'anima']]],
+  ['legendre_5fsecond_5fderivative',['legendre_second_derivative',['../namespaceanima.html#af9165e44b575f4c6300b3b696813cf87',1,'anima']]],
+  ['likelihood',['likelihood',['../classanima_1_1GaussianEMEstimator.html#a97f4c49044b89164eeb516941ba6d697',1,'anima::GaussianEMEstimator']]],
+  ['linearthreadedgeneratedata',['LinearThreadedGenerateData',['../classanima_1_1OrientedModelBaseResampleImageFilter.html#a6f919fa5e5d0994ad8067c2ac930e74f',1,'anima::OrientedModelBaseResampleImageFilter']]],
+  ['localpatchcovariancedistanceimagefilter',['LocalPatchCovarianceDistanceImageFilter',['../classanima_1_1LocalPatchCovarianceDistanceImageFilter.html#a86f8d6beee5fdbae5cdb5512c3608e29',1,'anima::LocalPatchCovarianceDistanceImageFilter']]],
+  ['localpatchmeandistanceimagefilter',['LocalPatchMeanDistanceImageFilter',['../classanima_1_1LocalPatchMeanDistanceImageFilter.html#a642594fe9a7004d50d9ec4d91181a37c',1,'anima::LocalPatchMeanDistanceImageFilter']]],
+  ['log_5fbessel_5fi',['log_bessel_i',['../namespaceanima.html#a5bdf1903cd368782af5f7a8bfc401d11',1,'anima']]],
+  ['log_5fbessel_5fi_5flower_5fbound',['log_bessel_i_lower_bound',['../namespaceanima.html#a907405456041e51a1610fffd05f8e67b',1,'anima']]],
+  ['log_5fbessel_5forder_5fderivative_5fi',['log_bessel_order_derivative_i',['../namespaceanima.html#a3984de213dc5d3b11674195b7f8593a7',1,'anima']]],
+  ['logrigid3dtransform',['LogRigid3DTransform',['../classanima_1_1LogRigid3DTransform.html#a6a250e3cf30de2edc543bf1787f1d96a',1,'anima::LogRigid3DTransform']]],
+  ['logtensorimagefilter',['LogTensorImageFilter',['../classanima_1_1LogTensorImageFilter.html#a6dbb15e5eb0eca8d09eb4d6ba1a7d099',1,'anima::LogTensorImageFilter']]],
+  ['lowmemorylocalpatchcovariancedistancebridge',['LowMemoryLocalPatchCovarianceDistanceBridge',['../classanima_1_1LowMemoryLocalPatchCovarianceDistanceBridge.html#a93aa8a73a27b3f035489f9c52eccd05b',1,'anima::LowMemoryLocalPatchCovarianceDistanceBridge']]],
+  ['lowmemorylocalpatchmeandistancebridge',['LowMemoryLocalPatchMeanDistanceBridge',['../classanima_1_1LowMemoryLocalPatchMeanDistanceBridge.html#ab3b9c2467fac06f973c7ee264742b2a5',1,'anima::LowMemoryLocalPatchMeanDistanceBridge']]],
+  ['lowmemorynlmeanspatienttogroupcomparisonbridge',['LowMemoryNLMeansPatientToGroupComparisonBridge',['../classanima_1_1LowMemoryNLMeansPatientToGroupComparisonBridge.html#ab60ce3130f1a11f0dd7698c6205e27c9',1,'anima::LowMemoryNLMeansPatientToGroupComparisonBridge']]],
+  ['lowmemorypatienttogroupcomparisonbridge',['LowMemoryPatientToGroupComparisonBridge',['../classanima_1_1LowMemoryPatientToGroupComparisonBridge.html#a4525c799391e697a8cbb53c1f4c6ea8f',1,'anima::LowMemoryPatientToGroupComparisonBridge']]],
+  ['lowmemorypatienttogroupodfcomparisonbridge',['LowMemoryPatientToGroupODFComparisonBridge',['../classanima_1_1LowMemoryPatientToGroupODFComparisonBridge.html#aa5a2f76377f9da4ae1ce4cb2577b7961',1,'anima::LowMemoryPatientToGroupODFComparisonBridge']]],
+  ['lswtransformagregator',['LSWTransformAgregator',['../classanima_1_1LSWTransformAgregator.html#a34e01f6b3344d107b1fcce65b4896f59',1,'anima::LSWTransformAgregator']]],
+  ['ltswtransformagregator',['LTSWTransformAgregator',['../classanima_1_1LTSWTransformAgregator.html#a334fdc5a2d201ca7cf75dd032d2f86ac',1,'anima::LTSWTransformAgregator']]]
+];

@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node1" href="$classanima_1_1ModelInitializer.html" title="Gaussian model initializers Model Initializer represents the processes computing a gaussian model tha..." alt="" coords="7,59,169,88"/>
+<area shape="rect" id="node3" href="$classanima_1_1AtlasInitializer.html" title="anima::AtlasInitializer\&lt; TInputImage, TMaskImage, TAtlasImage \&gt;" alt="" coords="220,5,660,35"/>
+<area shape="rect" id="node5" href="$classanima_1_1HierarchicalInitializer.html" title="Class initializing a gaussian mixture with hierarchical information It uses &#39;a priori&#39; knowledge of t..." alt="" coords="241,59,639,88"/>
+<area shape="rect" id="node7" href="$classanima_1_1RandomInitializer.html" title="Class initializing ramdomly a gaussian model." alt="" coords="351,112,529,141"/>
+</map>

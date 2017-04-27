@@ -1,0 +1,7 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$animaCollapseImage_8cxx.html" title="animaCollapseImage.cxx" alt="" coords="5,83,187,112"/>
+<area shape="rect" id="node5" href="$animaConvertImage_8cxx.html" title="animaConvertImage.cxx" alt="" coords="211,83,387,112"/>
+<area shape="rect" id="node7" href="$animaCropImage_8cxx.html" title="animaCropImage.cxx" alt="" coords="411,83,568,112"/>
+<area shape="rect" id="node9" href="$animaVectorizeImages_8cxx.html" title="animaVectorizeImages.cxx" alt="" coords="592,83,784,112"/>
+<area shape="rect" id="node11" href="$animaApplyTransformSerie_8cxx.html" title="animaApplyTransformSerie.cxx" alt="" coords="808,83,1027,112"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classanima_1_1BaseIsotropicCompartment.html" title="anima::BaseIsotropicCompartment" alt="" coords="247,59,492,88"/>
+<area shape="rect" id="node11" href="$classanima_1_1StickCompartment.html" title="anima::StickCompartment" alt="" coords="275,112,464,141"/>
+<area shape="rect" id="node13" href="$classanima_1_1TensorCompartment.html" title="anima::TensorCompartment" alt="" coords="269,165,469,195"/>
+<area shape="rect" id="node15" href="$classanima_1_1ZeppelinCompartment.html" title="anima::ZeppelinCompartment" alt="" coords="261,219,477,248"/>
+<area shape="rect" id="node5" href="$classanima_1_1FreeWaterCompartment.html" title="anima::FreeWaterCompartment" alt="" coords="588,5,809,35"/>
+<area shape="rect" id="node7" href="$classanima_1_1IsotropicRestrictedWaterCompartment.html" title="anima::IsotropicRestrictedWaterCompartment" alt="" coords="543,59,855,88"/>
+<area shape="rect" id="node9" href="$classanima_1_1StationaryWaterCompartment.html" title="anima::StationaryWaterCompartment" alt="" coords="568,112,829,141"/>
+</map>

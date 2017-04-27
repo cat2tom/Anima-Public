@@ -1,0 +1,4 @@
+<map id="G" name="G">
+<area shape="rect" id="node1" href="$classanima_1_1NonLocalPatchBaseSearcher.html" title="anima::NonLocalPatchBaseSearcher\&lt; itk::VectorImage\&lt; ImageScalarType, DataImageType::ImageDimension \&gt; \&gt;" alt="" coords="5,5,755,35"/>
+<area shape="rect" id="node3" href="$classanima_1_1NLMeansVectorPatchSearcher.html" title="anima::NLMeansVectorPatchSearcher\&lt; ImageScalarType, DataImageType \&gt;" alt="" coords="804,5,1311,35"/>
+</map>

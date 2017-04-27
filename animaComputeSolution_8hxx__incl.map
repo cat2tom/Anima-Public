@@ -1,0 +1,18 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$animaComputeSolution_8h.html" title="animaComputeSolution.h" alt="" coords="737,83,921,112"/>
+<area shape="rect" id="node21" href="$animaReadWriteFunctions_8h.html" title="animaReadWriteFunctions.h" alt="" coords="156,315,351,344"/>
+<area shape="rect" id="node29" href="$animaGaussianREMEstimator_8h.html" title="animaGaussianREMEstimator.h" alt="" coords="905,315,1127,344"/>
+<area shape="rect" id="node43" href="$animaAtlasInitializer_8h.html" title="animaAtlasInitializer.h" alt="" coords="1087,160,1247,189"/>
+<area shape="rect" id="node54" href="$animaHierarchicalInitializer_8h.html" title="animaHierarchicalInitializer.h" alt="" coords="2173,160,2376,189"/>
+<area shape="rect" id="node31" href="$animaGaussianEMEstimator_8h.html" title="animaGaussianEMEstimator.h" alt="" coords="1393,392,1607,421"/>
+<area shape="rect" id="node40" href="$animaGaussianREMEstimator_8hxx.html" title="animaGaussianREMEstimator.hxx" alt="" coords="976,392,1211,421"/>
+<area shape="rect" id="node36" href="$animaGaussianEMEstimator_8hxx.html" title="animaGaussianEMEstimator.hxx" alt="" coords="1387,469,1613,499"/>
+<area shape="rect" id="node45" href="$animaModelInitializer_8h.html" title="animaModelInitializer.h" alt="" coords="1755,392,1920,421"/>
+<area shape="rect" id="node51" href="$animaAtlasInitializer_8hxx.html" title="animaAtlasInitializer.hxx" alt="" coords="873,237,1047,267"/>
+<area shape="rect" id="node56" href="$animaImageClassifierFilter_8h.html" title="animaImageClassifierFilter.h" alt="" coords="2044,237,2244,267"/>
+<area shape="rect" id="node65" href="$animaRandomInitializer_8h.html" title="animaRandomInitializer.h" alt="" coords="2747,315,2928,344"/>
+<area shape="rect" id="node72" href="$animaClassificationStrategy_8h.html" title="animaClassificationStrategy.h" alt="" coords="3033,237,3244,267"/>
+<area shape="rect" id="node95" href="$animaHierarchicalInitializer_8hxx.html" title="animaHierarchicalInitializer.hxx" alt="" coords="2740,237,2959,267"/>
+<area shape="rect" id="node61" href="$animaImageClassifierFilter_8hxx.html" title="animaImageClassifierFilter.hxx" alt="" coords="2037,315,2251,344"/>
+<area shape="rect" id="node79" href="$animaClassificationStrategy_8hxx.html" title="animaClassificationStrategy.hxx" alt="" coords="3027,315,3251,344"/>
+</map>

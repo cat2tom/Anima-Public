@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classanima_1_1BaseAffineBlockMatcher.html" title="anima::BaseAffineBlockMatcher\&lt; TInputImageType \&gt;" alt="" coords="409,32,769,61"/>
+<area shape="rect" id="node9" href="$classanima_1_1DistortionCorrectionBlockMatcher.html" title="anima::DistortionCorrectionBlockMatcher\&lt; TInputImageType \&gt;" alt="" coords="379,85,800,115"/>
+<area shape="rect" id="node5" href="$classanima_1_1AnatomicalBlockMatcher.html" title="anima::AnatomicalBlockMatcher\&lt; TInputImageType \&gt;" alt="" coords="848,5,1213,35"/>
+<area shape="rect" id="node7" href="$classanima_1_1TensorBlockMatcher.html" title="anima::TensorBlockMatcher\&lt; TInputImageType \&gt;" alt="" coords="864,59,1197,88"/>
+</map>

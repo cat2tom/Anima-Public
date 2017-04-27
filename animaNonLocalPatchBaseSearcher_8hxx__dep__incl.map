@@ -1,0 +1,19 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$animaNonLocalPatchBaseSearcher_8h.html" title="animaNonLocalPatchBaseSearcher.h" alt="" coords="640,83,896,112"/>
+<area shape="rect" id="node5" href="$animaNonLocalMeansPatchSearcher_8h.html" title="animaNonLocalMeansPatchSearcher.h" alt="" coords="367,160,633,189"/>
+<area shape="rect" id="node25" href="$animaNLMeansVectorPatchSearcher_8h.html" title="animaNLMeansVectorPatchSearcher.h" alt="" coords="904,160,1171,189"/>
+<area shape="rect" id="node7" href="$animaNonLocalMeansImageFilter_8hxx.html" title="animaNonLocalMeansImageFilter.hxx" alt="" coords="77,237,336,267"/>
+<area shape="rect" id="node21" href="$animaNonLocalMeansPatchSearcher_8hxx.html" title="animaNonLocalMeansPatchSearcher.hxx" alt="" coords="360,237,640,267"/>
+<area shape="rect" id="node9" href="$animaNonLocalMeansImageFilter_8h.html" title="animaNonLocalMeansImageFilter.h" alt="" coords="85,315,328,344"/>
+<area shape="rect" id="node11" href="$animaNLMeans_8cxx.html" title="animaNLMeans.cxx" alt="" coords="5,392,152,421"/>
+<area shape="rect" id="node14" href="$animaNonLocalMeansTemporalImageFilter_8hxx.html" title="animaNonLocalMeansTemporalImageFilter.hxx" alt="" coords="176,392,491,421"/>
+<area shape="rect" id="node16" href="$animaNonLocalMeansTemporalImageFilter_8h.html" title="animaNonLocalMeansTemporalImageFilter.h" alt="" coords="183,469,484,499"/>
+<area shape="rect" id="node18" href="$animaNLMeansTemporal_8cxx.html" title="animaNLMeansTemporal.cxx" alt="" coords="232,547,435,576"/>
+<area shape="rect" id="node27" href="$animaNLMeansPatientToGroupComparisonImageFilter_8hxx.html" title="animaNLMeansPatientToGroupComparisonImageFilter.hxx" alt="" coords="664,237,1053,267"/>
+<area shape="rect" id="node40" href="$animaNLMeansVectorPatchSearcher_8hxx.html" title="animaNLMeansVectorPatchSearcher.hxx" alt="" coords="1077,237,1357,267"/>
+<area shape="rect" id="node29" href="$animaNLMeansPatientToGroupComparisonImageFilter_8h.html" title="animaNLMeansPatientToGroupComparisonImageFilter.h" alt="" coords="672,315,1045,344"/>
+<area shape="rect" id="node31" href="$animaLowMemNLMeansPatientToGroupComparisonBridge_8h.html" title="animaLowMemNLMeansPatientToGroupComparisonBridge.h" alt="" coords="587,392,989,421"/>
+<area shape="rect" id="node37" href="$animaNLMeansPatientToGroupComparison_8cxx.html" title="animaNLMeansPatientToGroupComparison.cxx" alt="" coords="1013,392,1331,421"/>
+<area shape="rect" id="node33" href="$animaLowMemNLMeansPatientToGroupComparison_8cxx.html" title="animaLowMemNLMeansPatientToGroupComparison.cxx" alt="" coords="555,469,928,499"/>
+<area shape="rect" id="node35" href="$animaLowMemNLMeansPatientToGroupComparisonBridge_8cxx.html" title="animaLowMemNLMeansPatientToGroupComparisonBridge.cxx" alt="" coords="952,469,1368,499"/>
+</map>

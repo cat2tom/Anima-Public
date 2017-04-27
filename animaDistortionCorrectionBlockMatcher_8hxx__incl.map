@@ -1,0 +1,17 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$animaDistortionCorrectionBlockMatcher_8h.html" title="animaDistortionCorrectionBlockMatcher.h" alt="" coords="1488,83,1773,112"/>
+<area shape="rect" id="node70" href="$animaFastCorrelationImageToImageMetric_8h.html" title="animaFastCorrelationImageToImageMetric.h" alt="" coords="1905,83,2207,112"/>
+<area shape="rect" id="node82" href="$animaFastMeanSquaresImageToImageMetric_8h.html" title="animaFastMeanSquaresImageToImageMetric.h" alt="" coords="2481,83,2801,112"/>
+<area shape="rect" id="node91" href="$animaDirectionScaleSkewTransform_8h.html" title="animaDirectionScaleSkewTransform.h" alt="" coords="2993,83,3255,112"/>
+<area shape="rect" id="node5" href="$animaBaseBlockMatcher_8h.html" title="animaBaseBlockMatcher.h" alt="" coords="1019,160,1208,189"/>
+<area shape="rect" id="node7" href="$animaBaseTransformAgregator_8h.html" title="animaBaseTransformAgregator.h" alt="" coords="549,237,781,267"/>
+<area shape="rect" id="node24" href="$animaBaseBlockMatcher_8hxx.html" title="animaBaseBlockMatcher.hxx" alt="" coords="1208,237,1413,267"/>
+<area shape="rect" id="node15" href="$animaBaseTransformAgregator_8hxx.html" title="animaBaseTransformAgregator.hxx" alt="" coords="171,315,416,344"/>
+<area shape="rect" id="node27" href="$animaBobyqaOptimizer_8h.html" title="animaBobyqaOptimizer.h" alt="" coords="440,315,621,344"/>
+<area shape="rect" id="node36" href="$animaVoxelExhaustiveOptimizer_8h.html" title="animaVoxelExhaustiveOptimizer.h" alt="" coords="645,315,883,344"/>
+<area shape="rect" id="node42" href="$animaBlockMatchInitializer_8h.html" title="animaBlockMatchInitializer.h" alt="" coords="1209,315,1412,344"/>
+<area shape="rect" id="node53" href="$animaBlockMatchInitializer_8hxx.html" title="animaBlockMatchInitializer.hxx" alt="" coords="1400,392,1616,421"/>
+<area shape="rect" id="node77" href="$animaFastCorrelationImageToImageMetric_8hxx.html" title="animaFastCorrelationImageToImageMetric.hxx" alt="" coords="1899,160,2213,189"/>
+<area shape="rect" id="node87" href="$animaFastMeanSquaresImageToImageMetric_8hxx.html" title="animaFastMeanSquaresImageToImageMetric.hxx" alt="" coords="2616,160,2949,189"/>
+<area shape="rect" id="node96" href="$animaDirectionScaleSkewTransform_8hxx.html" title="animaDirectionScaleSkewTransform.hxx" alt="" coords="3075,160,3349,189"/>
+</map>

@@ -1,0 +1,25 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$animaGaussianMCMVariableProjectionCost_8h.html" title="animaGaussianMCMVariableProjectionCost.h" alt="" coords="657,83,964,112"/>
+<area shape="rect" id="node23" href="$animaMultiCompartmentModelCreator_8h.html" title="animaMultiCompartmentModelCreator.h" alt="" coords="1976,83,2253,112"/>
+<area shape="rect" id="node28" href="$animaBaseMCMCostFunction_8h.html" title="animaBaseMCMCostFunction.h" alt="" coords="1560,83,1779,112"/>
+<area shape="rect" id="node37" href="$animaMCMFileReader_8h.html" title="animaMCMFileReader.h" alt="" coords="2604,160,2772,189"/>
+<area shape="rect" id="node44" href="$animaMCMFileWriter_8h.html" title="animaMCMFileWriter.h" alt="" coords="2181,160,2341,189"/>
+<area shape="rect" id="node50" href="$animaMCMImage_8h.html" title="animaMCMImage.h" alt="" coords="2372,83,2516,112"/>
+<area shape="rect" id="node58" href="$animaMultiCompartmentModel_8cxx.html" title="animaMultiCompartmentModel.cxx" alt="" coords="2591,83,2836,112"/>
+<area shape="rect" id="node5" href="$animaGaussianMCMVariableProjectionCost_8cxx.html" title="animaGaussianMCMVariableProjectionCost.cxx" alt="" coords="5,160,325,189"/>
+<area shape="rect" id="node7" href="$animaGaussianMCMVariableProjectionMultipleValuedCostFunction_8h.html" title="animaGaussianMCMVariableProjectionMultipleValuedCostFunction.h" alt="" coords="349,160,800,189"/>
+<area shape="rect" id="node18" href="$animaGaussianMCMVariableProjectionSingleValuedCostFunction_8h.html" title="animaGaussianMCMVariableProjectionSingleValuedCostFunction.h" alt="" coords="824,160,1267,189"/>
+<area shape="rect" id="node9" href="$animaGaussianMCMVariableProjectionMultipleValuedCostFunction_8cxx.html" title="animaGaussianMCMVariableProjectionMultipleValuedCostFunction.cxx" alt="" coords="336,237,800,267"/>
+<area shape="rect" id="node11" href="$animaMCMEstimatorImageFilter_8hxx.html" title="animaMCMEstimatorImageFilter.hxx" alt="" coords="1544,237,1795,267"/>
+<area shape="rect" id="node13" href="$animaMCMEstimatorImageFilter_8h.html" title="animaMCMEstimatorImageFilter.h" alt="" coords="1789,315,2024,344"/>
+<area shape="rect" id="node15" href="$animaMCMEstimator_8cxx.html" title="animaMCMEstimator.cxx" alt="" coords="1817,392,1996,421"/>
+<area shape="rect" id="node20" href="$animaGaussianMCMVariableProjectionSingleValuedCostFunction_8cxx.html" title="animaGaussianMCMVariableProjectionSingleValuedCostFunction.cxx" alt="" coords="824,237,1277,267"/>
+<area shape="rect" id="node25" href="$animaMultiCompartmentModelCreator_8cxx.html" title="animaMultiCompartmentModelCreator.cxx" alt="" coords="1816,160,2107,189"/>
+<area shape="rect" id="node30" href="$animaGaussianMCMCostFunction_8h.html" title="animaGaussianMCMCostFunction.h" alt="" coords="1547,160,1792,189"/>
+<area shape="rect" id="node35" href="$animaBaseMCMCostFunction_8cxx.html" title="animaBaseMCMCostFunction.cxx" alt="" coords="1291,160,1523,189"/>
+<area shape="rect" id="node32" href="$animaGaussianMCMCostFunction_8cxx.html" title="animaGaussianMCMCostFunction.cxx" alt="" coords="1819,237,2077,267"/>
+<area shape="rect" id="node39" href="$animaMCMFileReader_8cxx.html" title="animaMCMFileReader.cxx" alt="" coords="2803,237,2984,267"/>
+<area shape="rect" id="node41" href="$animaMCMFileReader_8hxx.html" title="animaMCMFileReader.hxx" alt="" coords="2597,237,2779,267"/>
+<area shape="rect" id="node47" href="$animaMCMFileWriter_8hxx.html" title="animaMCMFileWriter.hxx" alt="" coords="2181,237,2355,267"/>
+<area shape="rect" id="node55" href="$animaMCMImage_8hxx.html" title="animaMCMImage.hxx" alt="" coords="2365,160,2523,189"/>
+</map>

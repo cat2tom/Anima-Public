@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classanima_1_1BaseMCMCostFunction.html" title="Base cost function class to handle maximum likelihood estimation with either marginal or profile esti..." alt="" coords="709,11,923,41"/>
+<area shape="rect" id="node7" href="$classanima_1_1BaseOrientedModelImageToImageMetric.html" title="anima::BaseOrientedModelImageToImageMetric\&lt; TFixedImage, TMovingImage \&gt;" alt="" coords="548,65,1084,94"/>
+<area shape="rect" id="node9" href="$classanima_1_1GaussianMCMVariableProjectionSingleValuedCostFunction.html" title="anima::GaussianMCMVariableProjectionSingleValuedCostFunction" alt="" coords="597,118,1035,147"/>
+<area shape="rect" id="node11" href="$classanima_1_1ODFMaximaCostFunction.html" title="anima::ODFMaximaCostFunction" alt="" coords="701,171,931,201"/>
+<area shape="rect" id="node13" href="$classanima_1_1T2EPGRelaxometryCostFunction.html" title="anima::T2EPGRelaxometryCostFunction" alt="" coords="680,225,952,254"/>
+<area shape="rect" id="node15" href="$classanima_1_1BaseOrientedModelImageToImageMetric.html" title="anima::BaseOrientedModelImageToImageMetric\&lt; itk::VectorImage\&lt; TFixedImagePixelType, ImageDimension \&gt;, itk::VectorImage\&lt; TMovingImagePixelType, ImageDimension \&gt; \&gt;" alt="" coords="241,278,1391,307"/>
+<area shape="rect" id="node5" href="$classanima_1_1GaussianMCMCostFunction.html" title="anima::GaussianMCMCostFunction" alt="" coords="1733,11,1976,41"/>
+<area shape="rect" id="node17" href="$classanima_1_1TensorCorrelationImageToImageMetric.html" title="anima::TensorCorrelationImageToImageMetric\&lt; TFixedImagePixelType, TMovingImagePixelType, ImageDimension \&gt;" alt="" coords="1479,225,2231,254"/>
+<area shape="rect" id="node19" href="$classanima_1_1TensorGeneralizedCorrelationImageToImageMetric.html" title="anima::TensorGeneralizedCorrelationImageToImageMetric\&lt; TFixedImagePixelType, TMovingImagePixelType, ImageDimension \&gt;" alt="" coords="1441,278,2268,307"/>
+<area shape="rect" id="node21" href="$classanima_1_1TensorMeanSquaresImageToImageMetric.html" title="anima::TensorMeanSquaresImageToImageMetric\&lt; TFixedImagePixelType, TMovingImagePixelType, ImageDimension \&gt;" alt="" coords="1469,331,2240,361"/>
+</map>
